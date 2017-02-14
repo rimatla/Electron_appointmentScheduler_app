@@ -1,0 +1,150 @@
+From Ray Villalobos
+Electron: Building Cross Platform Desktop Apps
+lynda.com
+
+- How to clone repo and checkout each branch
+
+clone
+https://github.com/planetoftheweb/electron.git
+
+$cd ~/Desktop
+$mkdir electron_pet_app
+$cd electron_pet_app
+
+CLONE
+That's going to download just the contents of the .git folder.
+So this will download the bare repository
+
+$git clone --bare https://github.com/planetoftheweb/electron.git .git
+
+Now we need to convert that to a regular repository
+$git config --bool core.bare false
+$git reset --hard
+
+This is going to give us all of the different branches.
+
+$git branch
+You can see that I have not just the master branch, but every other branch in the project
+
+CHECKOUT BRANCH
+$git checkout 01_02b
+
+You can stash changes
+$git stash
+
+Switch to master
+$git checkout master
+
+npm install --save
+
+ELECTRON
+- Electron is a framework for building native applications.
+- it gives you the ability to build real applications for different operating systems.
+- Electron uses technology that web developers are very familiar with. Like HTML, CSS and JavaScript. Now, it also uses NodeJS and Chromium.
+
+- Chromium is essentially a web browser, you have the ability to do things like debug your code and use any HTML, CSS or JavaScript features that you want.
+- Electron creates the cross platform versions of applications for you. So it takes, essentially what is a web application, and converts it so that it runs natively on all kinds of different platforms.
+
+BUILDING APP
+$npm install -g electron
+
+-Save Electron as a development dependency of our project.
+$npm install --save-dev electron
+
+RUN
+$electron .
+. for current directory 
+
+
+Windows
+-You can use to set up the look and behavior of your windows so you can do things like control the width or height plus create transparent windows, remove their frames and much more.
+http://electron.atom.io/docs/api/browser-window/
+
+Browser windows really have a rich set of options that you can use to configure how everything looks and how things operate so you can do all kinds of things just with that configuration object and it's really cool when you can work with different windows and configure them to do just what you want
+
+
+Events
+Events let you control what happens when certain window events take place.
+We can then trigger actions when things happen to our windows.
+Window events allow you to control how your applications function depending on what's happening to your windows.
+You can even set up timers related to those events pretty easily with regular JavaScript
+$electron .
+
+
+Processes
+-Electron has two main processes that occasionally need to communicate with each other. Plus, we need to find other ways to talk to the operating system to accomplish certain tasks.
+-The two processes are called the Main and the Render process
+
+-Each one of our browser windows gets a separate renderer process
+-Those processes are accessed via two objects, and depending on where you call these from, there are two objects that you'll need to access called
+ipcMain or ipcRenderer
+
+-IPC stands for inter-process communication, and main and renderer, refer to the process you're trying to access.
+
+-In addition to that, there is a method called SHELL that you can use to let your applications talk to the desktop in order to deal with tasks outside of your application
+
+*********************************************************************************************************************************************
+REACT PREP
+
+electron-packager
+Is going to take care of packaging our application and using these icons and converting our application into a normal Windows or Mac app
+
+electron-reload
+Will make it easier to refresh our application when we make changes to the renderer processes.
+
+*********************************************************************************************************************************************
+Gulp
+Is going to allow us to do our gulp or our automation tasks. So, we've got gulp and gulp-browserify which is actually going to take care of the conversion between JSX and JavaScript
+
+gulp-concat-css module
+Will allow us to combine our css with bootstrap's css
+
+gulp-react plugin
+That's going to allow us to use React within our gulp process
+
+gulp-run module
+Allows us to run terminal commands from our gulp process as well
+
+React library and Reactify
+Is how browserify is going to do the conversion for us
+
+Finally
+jQuery
+Bootstrap
+
+$npm install -g gulp
+
+issue gulp command to run app
+$gulp
+
+*********************************************************************************************************************************************
+Node.js
+- Because we're using browserify to process things, we're going to have to modify things a bit because the browserify require command is going to conflict with the node.js require command. So what we can do is go into our index.html
+
+*********************************************************************************************************************************************
+- Packaging the application
+$npm install electron-packager -g
+
+electron packager command
+
+- Turn this into a script on package.json
+mac
+$electron-packager . 'myOrders' --out ~/Desktop/myOrders --overwrite --icon ./icons/icon
+pc
+pain in the ass!!!....
+$electron-packager . 'myOrders' --out C:\Users\acoelho\Desktop\myOrders --overwrite --icon ./icons/icon
+
+
+- Finally
+$npm run pack
+
+
+overwrite will make sure that the last time you package overwrites the previous times
+
+resource for special icon format
+mac
+http://www.img2icnsapp.com/
+pc
+http://www.rw-designer.com/image-to-icon
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet App React & Electron</title>
+    <!--created by Gulp inside app directory-->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="main">
+    <div class="page" id="petratings">
+        <div id="petAppointments">
+                <h2>App... loading</h2>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    /**
+     *  Create var name it eRequire that will have the same function as a regular require command.
+        That way when I'm in this render file, I can use that eRequire command instead of the require command that I would normally use in node.js.
+        So what would happen is, when browserify encounters these requires, it's going to process them and replace whatever is in here with the actual library.
+        And whenever it encounters my eRequire command, it'll work just like node.js.
+     */
+
+    const eRequire = require;
+
+    /**
+     *  Also create a variable for another feature that we normally use in node.js called '__dirname'.
+     *  It's a special node.js command that gives you the current directory
+     */
+    const dirName = __dirname;
+
+    /**
+     *  Build a data location variable and that is going to hold the location of our data.
+     *  This is relevant when we are working in a cross platform environment.
+     *  I could really just use sort of the path to the directory but it's not going to be cross platform compatible because on Windows, the slashes sort of go the 'wrong way.
+     *  So we're going to use another node.js item called path.
+     *  Path, allows us to create cross platform directory references.
+     *  Then I'm going to use the resolve method of path to go to the proper directory
+     *  Back up a level (that's why these two dots are right there) and then find the file called data. Find the folder called data and then in there find the file called data.json.
+     *  This how we'd get the data file.
+     *  The resolve command is going to make this cross platform compatible.
+     */
+    const dataLocation = require('path').resolve(__dirname, '..', 'data', 'data.json');
+</script>
+<!--created by Gulp inside app directory-->
+<script src="js/render.js"></script>
+</body>
+</html>
+
+<!--
+/**
+* Notes:
+* Most of the time with React we would use a life cycle method to import some data and perhaps an AJAX call to bring that data in
+* But because we have node.js we can just use the require command and the file system to bring in files.
+* We do have to be a bit careful with require commands because of what's happening when you're also working with a process that uses browserify.
+*/
+-->

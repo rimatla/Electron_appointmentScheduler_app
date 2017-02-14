@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-COMPATIBLE" content="ie=edge">
+    <title>Processes</title>
+    <!--<link rel="stylesheet" href="../process/css/app.css">-->
+    <link rel="stylesheet" href="css/app.css">
+    <script type="text/javascript">
+
+        var electron = require('electron');
+        var shell = electron.shell;
+        var ipc = electron.ipcRenderer;
+
+        $(function() {
+            $('#page-info').draggable();
+        });
+        
+    </script>
+</head>
+<body id="page-info">
+<main class="info-content">
+    <h3 class="page-headline">Welcome to Planet Electron</h3>
+    <p>Welcome to the planet of electrons!<br><strong>Version 1.00</strong><br></p>
+    <!--open link on same window-->
+    <!--<a href="http://electron.atom.io">Explode Planet</a><br>-->
+    <!--open link on the web browser-->
+    <a id="externalLinks" href="#" onclick="shell.openExternal('http://electron.atom.io')">Explode Planet</a><br>
+    <!--ipc render object-->
+    <div><a class="externalLinks" href="#" onclick="ipc.sendSync('closeInfoWindow')">close window</a></div>
+</main>
+</body>
+</html>
