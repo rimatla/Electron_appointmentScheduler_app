@@ -1,8 +1,8 @@
-##[ELECTRON](http://electron.atom.io/) Appointment Scheduling App
+## [ELECTRON](http://electron.atom.io/) Appointment Scheduling App
 
-####- Electron
-####- React
-####- Gulp
-####- Browserify
-####- JSON
-####- NodeJS
+#### - Electron
+#### - React
+#### - Gulp
+#### - Browserify
+#### - JSON
+#### - NodeJS
